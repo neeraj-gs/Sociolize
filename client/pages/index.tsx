@@ -12,7 +12,7 @@ import { PiBroadcastFill } from "react-icons/pi";
 import FeedCard from '@/components/FeedCard';
 
 
-const inter = Inter({ subsets: ['latin'] })
+
 
 interface LeftGridButtons{
   title:string;
@@ -52,7 +52,7 @@ const LeftMenuItems = [
 
 export default function Home() {
   return (
-    <main className={inter.className}>
+    <main>
       <div className='grid grid-cols-12 h-screen w-screen px-56'>
 
         {/* Left Grid */}
@@ -75,7 +75,7 @@ export default function Home() {
         </div>
 
         {/* CenterGrid  */}
-        <div className='col-span-6 border-r-2 border-l-2 border-slate-200'>
+        <div className='col-span-5 border-r-2 border-l-2 border-slate-200'>
           <FeedCard />
         </div>
 
@@ -83,7 +83,7 @@ export default function Home() {
 
 
 
-        <div className='col-span-3'></div>
+        <div className='col-span-4'></div>
       </div>
     </main>
   )
