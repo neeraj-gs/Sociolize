@@ -4,6 +4,12 @@ import { SiSocialblade } from "react-icons/si";
 import { SiHashicorp } from "react-icons/si";
 import { RiHomeOfficeLine } from "react-icons/ri";
 import { Button } from '@/components/ui/button';
+import { AiOutlineNotification } from "react-icons/ai";
+import { TbMessageCircleHeart } from "react-icons/tb";
+import { CiSaveDown2 } from "react-icons/ci";
+import { PiUserSwitchThin } from "react-icons/pi";
+import { PiBroadcastFill } from "react-icons/pi";
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,19 +29,19 @@ const LeftMenuItems = [
   },
   {
     title: "Notifications",
-    icon: <RiHomeOfficeLine /> //Bell
+    icon: <AiOutlineNotification /> //Bell
   },
   {
     title: "Messages",
-    icon: <RiHomeOfficeLine /> //msg
+    icon: <TbMessageCircleHeart /> //msg
   },
   {
     title: "Saved",
-    icon: <RiHomeOfficeLine /> //Bookmark
+    icon: <CiSaveDown2 /> //Bookmark
   },
   {
     title: "Profile",
-    icon: <RiHomeOfficeLine /> //Usre
+    icon: <PiUserSwitchThin /> //Usre
   },
   
 
@@ -63,7 +69,7 @@ export default function Home() {
             })}
             </ul>
             <div className='mt-6 pr-2'>
-            <Button className='bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'>Socio</Button>
+            <Button className='bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'><span className='mr-2'>P2P</span> <PiBroadcastFill /> </Button>
             </div>
           
           </div>
