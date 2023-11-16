@@ -9,6 +9,7 @@ import { TbMessageCircleHeart } from "react-icons/tb";
 import { CiSaveDown2 } from "react-icons/ci";
 import { PiUserSwitchThin } from "react-icons/pi";
 import { PiBroadcastFill } from "react-icons/pi";
+import FeedCard from '@/components/FeedCard';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -74,7 +75,9 @@ export default function Home() {
         </div>
 
         {/* CenterGrid  */}
-        <div className='col-span-6 border-r-2 border-l-2 border-slate-200'></div>
+        <div className='col-span-6 border-r-2 border-l-2 border-slate-200'>
+          <FeedCard />
+        </div>
 
 
 
