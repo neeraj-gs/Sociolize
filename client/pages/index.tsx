@@ -29,19 +29,19 @@ const LeftMenuItems = [
   },
   {
     title: "Notifications",
-    icon: <AiOutlineNotification /> //Bell
+    icon: <AiOutlineNotification /> 
   },
   {
     title: "Messages",
-    icon: <TbMessageCircleHeart /> //msg
+    icon: <TbMessageCircleHeart /> 
   },
   {
     title: "Saved",
-    icon: <CiSaveDown2 /> //Bookmark
+    icon: <CiSaveDown2 /> 
   },
   {
     title: "Profile",
-    icon: <PiUserSwitchThin /> //Usre
+    icon: <PiUserSwitchThin /> 
   },
   
 
@@ -57,9 +57,8 @@ export default function Home() {
         {/* Left Grid */}
         <div className='col-span-3  pt-8 px-4' >
           <div className='text-6xl w-fit  hover:bg-gray-200 rounded-full p-2 h-fit cursor-pointer transition-all'>
-          <SiSocialblade  />
+            <SiSocialblade  />
           </div>
-
           <div className='mt-6 text-xl pr-4'>
             <ul>
             {LeftMenuItems.map((i)=>{
@@ -69,15 +68,18 @@ export default function Home() {
             })}
             </ul>
             <div className='mt-6 pr-2'>
-            <Button className='bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'><span className='mr-2'>P2P</span> <PiBroadcastFill /> </Button>
+              <Button className='bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'><span className='mr-2'>P2P</span> <PiBroadcastFill /> </Button>
             </div>
-          
           </div>
-          
         </div>
 
-        
+        {/* CenterGrid  */}
         <div className='col-span-6 border-r-2 border-l-2 border-slate-200'></div>
+
+
+
+
+
         <div className='col-span-3'></div>
       </div>
     </main>
