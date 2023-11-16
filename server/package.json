@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node build/index.js",
+    "build": "tsc -p .",
+    "dev": "tsc-watch --onSuccess \"npm start\""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "tsc-watch": "^6.0.4",
     "typescript": "^5.2.2"
   },
   "dependencies": {
