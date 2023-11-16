@@ -1,0 +1,16 @@
+Sociolize
+    A Full Stack SOcial Media App , that Is simialr ot twitter.
+
+Tech Stack:
+    1.Node.js - Server SIde- A Cross paltform JS RUn time envirnment, to run servers on js
+    2.GraphQL - An ALterantive ot REST API, Query Language for API's
+    3.Apollo GraphQL - A Framework of graphql , that helps us host server
+    4.PostgreSQL - Relational and powerful
+    5.Prisma ORM - For Making queries , reads and writes for our database
+    6.Supabase - To host our Database. CLoud Provider
+    7.NextJS - Framework of react, used fo rFrontend
+    8.Tailwind CSS and ShadCN UI - FOr Styling and component library 
+    9.TypeScript - TO maintain type safety adn code quality 
+    10.AWS - Deploymnets
+
+
