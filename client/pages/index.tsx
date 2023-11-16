@@ -3,6 +3,7 @@ import React from 'react';
 import { SiSocialblade } from "react-icons/si";
 import { SiHashicorp } from "react-icons/si";
 import { RiHomeOfficeLine } from "react-icons/ri";
+import { Button } from '@/components/ui/button';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -53,7 +54,7 @@ export default function Home() {
           <SiSocialblade  />
           </div>
 
-          <div className='mt-6 text-xl'>
+          <div className='mt-6 text-xl pr-4'>
             <ul>
             {LeftMenuItems.map((i)=>{
               return(
@@ -61,9 +62,10 @@ export default function Home() {
               )
             })}
             </ul>
-
-            
-            
+            <div className='mt-6 pr-2'>
+            <Button className='bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'>Socio</Button>
+            </div>
+          
           </div>
           
         </div>
