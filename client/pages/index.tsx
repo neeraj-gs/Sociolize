@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import React from 'react';
 import { SiSocialblade } from "react-icons/si";
+import { SiHashicorp } from "react-icons/si";
 import { RiHomeOfficeLine } from "react-icons/ri";
 
 const inter = Inter({ subsets: ['latin'] })
@@ -14,20 +15,55 @@ const LeftMenuItems = [
   {
     title: "Home",
     icon: <RiHomeOfficeLine />
-  }
+  },
+  {
+    title: "Explore",
+    icon: <SiHashicorp />
+  },
+  {
+    title: "Notifications",
+    icon: <RiHomeOfficeLine /> //Bell
+  },
+  {
+    title: "Messages",
+    icon: <RiHomeOfficeLine /> //msg
+  },
+  {
+    title: "Saved",
+    icon: <RiHomeOfficeLine /> //Bookmark
+  },
+  {
+    title: "Profile",
+    icon: <RiHomeOfficeLine /> //Usre
+  },
+  
+
 ]
 
 
 
 export default function Home() {
   return (
-    <main>
+    <main className={inter.className}>
       <div className='grid grid-cols-12 h-screen w-screen px-56'>
 
         {/* Left Grid */}
-        <div className='col-span-3 flex justify-start pt-8'>
-          <div className='text-5xl hover:bg-gray-200 rounded-full p-2 h-fit cursor-pointer transition-all'>
+        <div className='col-span-3  pt-8 px-4' >
+          <div className='text-6xl w-fit  hover:bg-gray-200 rounded-full p-2 h-fit cursor-pointer transition-all'>
           <SiSocialblade  />
+          </div>
+
+          <div className='mt-6 text-xl'>
+            <ul>
+            {LeftMenuItems.map((i)=>{
+              return(
+                <li className=' w-fit flex justify-start items-center gap-4 hover:bg-gray-200 rounded-full px-5 py-2 cursor-pointer mt-4' key={i.title}><span>{i.icon}</span> <span>{i.title}</span></li>
+              )
+            })}
+            </ul>
+
+            
+            
           </div>
           
         </div>
