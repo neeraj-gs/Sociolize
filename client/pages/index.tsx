@@ -56,7 +56,7 @@ export default function Home() {
       <div className='grid grid-cols-12 h-screen w-screen px-56'>
 
         {/* Left Grid */}
-        <div className='col-span-3  pt-8 px-4' >
+        <div className='col-span-3  pt-8 px-4 ml-20' >
           <div className='text-6xl w-fit  hover:bg-gray-200 rounded-full p-2 h-fit cursor-pointer transition-all'>
             <SiSocialblade  />
           </div>
@@ -64,7 +64,7 @@ export default function Home() {
             <ul>
             {LeftMenuItems.map((i)=>{
               return(
-                <li className=' w-fit flex justify-start items-center gap-4 hover:bg-gray-200 rounded-full px-5 py-2 cursor-pointer mt-4' key={i.title}><span>{i.icon}</span> <span>{i.title}</span></li>
+                <li className=' w-fit flex justify-start items-center gap-4 hover:bg-gray-200 rounded-full px-3 py-3 cursor-pointer mt-4' key={i.title}><span>{i.icon}</span> <span>{i.title}</span></li>
               )
             })}
             </ul>
