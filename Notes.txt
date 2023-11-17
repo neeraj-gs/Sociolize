@@ -13,4 +13,9 @@ Tech Stack:
     9.TypeScript - TO maintain type safety adn code quality 
     10.AWS - Deploymnets
 
+yarn is much faster and has better caching cabability
+Graphql Has only one end piint and all the API QUeries are done unsing it 
+    We can control the data required and also nest them and diffrent types and get in a single query 
+Mutation : Add data to the server , Query: 
+tyDefs ins the schema , to tell what type fo wueries and mutaion is done and in resolvers we need to write the actaula code for the type defs 
 
