@@ -62,7 +62,10 @@ export default function Home() {
 
     const {verifyGoogleToken} = await graphqlClient.request(verifyUserGoogleTokenQuery,{token:googleToken})
     toast.success(`Verified Successfully`)
-    console.log(verifyGoogleToken)
+    // console.log(verifyGoogleToken)
+
+    if(verifyGoogleToken) window.localStorage.setItem("__sociolize_token",verifyGoogleToken)
+    //have verified the and got the token , from now we need to sent the token as a header everytime we perform some operations on the cleint side
   },[])
 
   return (
