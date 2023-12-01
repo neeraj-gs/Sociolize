@@ -1,22 +1,20 @@
-import { Inter } from 'next/font/google'
-import React, { useCallback } from 'react';
-import { SiSocialblade } from "react-icons/si";
-import { SiHashicorp } from "react-icons/si";
-import { RiHomeOfficeLine } from "react-icons/ri";
-import { Button } from '@/components/ui/button';
-import { AiOutlineNotification } from "react-icons/ai";
-import { TbMessageCircleHeart } from "react-icons/tb";
-import { CiSaveDown2 } from "react-icons/ci";
-import { PiUserSwitchThin } from "react-icons/pi";
-import { PiBroadcastFill } from "react-icons/pi";
-import FeedCard from '@/components/FeedCard';
-import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
-import toast from 'react-hot-toast';
 import { graphqlClient } from '@/clients/api';
+import FeedCard from '@/components/FeedCard';
+import { Button } from '@/components/ui/button';
 import { verifyUserGoogleTokenQuery } from '@/graphql/query/user';
 import { useCurrentUser } from '@/hooks/user';
+import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import { useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
+import React, { useCallback } from 'react';
+import toast from 'react-hot-toast';
+import { AiOutlineNotification } from "react-icons/ai";
+import { CiSaveDown2 } from "react-icons/ci";
+import { PiBroadcastFill, PiUserSwitchThin } from "react-icons/pi";
+import { RiHomeOfficeLine } from "react-icons/ri";
+import { SiHashicorp, SiSocialblade } from "react-icons/si";
+import { TbMessageCircleHeart } from "react-icons/tb";
+import { GrGallery } from "react-icons/gr";
 
 
 
@@ -115,6 +113,25 @@ export default function Home() {
 
         {/* CenterGrid  */}
         <div className='col-span-5 border-r-2 border-l-2 border-slate-200'>
+          <div>
+          <div className='border-2 border-r-0 border-l-0 border-slate-50 p-5 hover:bg-slate-50 transition-all cursor-pointer'>
+          <div className='grid grid-cols-12 gap-3'>
+          <div className='col-span-1'>
+            {user?.profileImageURL && (
+              <Image className='rounded-full' src={user?.profileImageURL} alt='user-iamge' height={70} width={70} />
+            )}
+          </div>
+          <div className='col-span-11'>
+              <textarea className='border w-full bg-transparent text-xl px-3 border-b border-slate-100' placeholder="What's Happening?" rows={4}></textarea>
+              <div className='text-xl flex justify-between items-center'>
+                <GrGallery />
+                <Button className='bg-black p-4 rounded-full mx-4 text-white text-sm hover:text-black' variant='ghost'><span className='mr-2'>P2P</span> <PiBroadcastFill /> </Button>
+              </div>
+                
+          </div>
+          </div>
+          </div>
+          </div> 
           <FeedCard />
         </div>
 
