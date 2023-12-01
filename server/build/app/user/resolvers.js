@@ -14,7 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolvers = void 0;
 const axios_1 = __importDefault(require("axios"));
-const db_1 = require("../../client/db");
+const db_1 = require("../../clients/db");
+const jwt_1 = __importDefault(require("../services/jwt"));
+// give a google token , we take the suer from ogogle apia dn get the resuly , then cahcke if user si  in db , if not user create a new User, and then create a token and return teh token 
 const queries = {
     verifyGoogleToken: (parent, { token }) => __awaiter(void 0, void 0, void 0, function* () {
         const googleToken = token;
@@ -38,6 +40,16 @@ const queries = {
                 }
             });
         }
+        const userInDb = yield db_1.prismaclient.user.findUnique({
+            where: {
+                email: data.email,
+            }
+        });
+        if (!userInDb) {
+            throw new Error("No User Foudn with this Email");
+        }
+        const userToken = jwt_1.default.generateToeknForUser(userInDb);
+        return userToken;
     })
 };
 exports.resolvers = { queries };

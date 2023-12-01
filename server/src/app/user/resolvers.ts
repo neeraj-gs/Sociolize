@@ -1,5 +1,6 @@
 import axios from "axios";
-import { prismaclient } from "../../client/db";
+import { prismaclient } from "../../clients/db";
+import JWTService from "../services/jwt";
 
 interface GoogleTokenResult{
     iss?:string;
@@ -21,8 +22,7 @@ interface GoogleTokenResult{
     typ?:string;
 }
 
-
-
+// give a google token , we take the suer from ogogle apia dn get the resuly , then cahcke if user si  in db , if not user create a new User, and then create a token and return teh token 
 
 const queries = {
     verifyGoogleToken: async(parent:any,{token}:{token:string})=>{
@@ -50,6 +50,16 @@ const queries = {
                 }
             })
         }
+        const userInDb = await prismaclient.user.findUnique({
+            where:{
+                email:data.email,
+            }
+        })
+        if(!userInDb){
+            throw new Error("No User Foudn with this Email")
+        }
+        const userToken = JWTService.generateToeknForUser(userInDb)
+        return userToken;
 
         
     }
