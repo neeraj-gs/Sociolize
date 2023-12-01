@@ -1,7 +1,6 @@
 import { User } from "@prisma/client";
 import jwt from 'jsonwebtoken';
 import { JWTUser } from "../../interfaces";
-
 const secret = 'gijgbaekjbg'
 
 

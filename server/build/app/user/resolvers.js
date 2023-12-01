@@ -58,5 +58,6 @@ const queries = {
         if (!id)
             return null;
     })
+    //context is basically used to get the header from the authoriationa dn tehn use it for better integrations
 };
 exports.resolvers = { queries };

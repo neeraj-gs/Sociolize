@@ -41,7 +41,8 @@ function initServer() {
             context: ({ req, res }) => __awaiter(this, void 0, void 0, function* () {
                 return {
                     user: req.headers.authorization
-                        ? jwt_1.default.decodeToken(req.headers.authorization)
+                        ? jwt_1.default.decodeToken(req.headers.authorization.split('Bearer ')[1] //token
+                        )
                         : undefined,
                 };
             })

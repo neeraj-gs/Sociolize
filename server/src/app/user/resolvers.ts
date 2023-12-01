@@ -70,6 +70,7 @@ const queries = {
         const id = ctx.user?.id
         if(!id) return null;
     }
+    //context is basically used to get the header from the authoriationa dn tehn use it for better integrations
 };
 
 export const resolvers = {queries}

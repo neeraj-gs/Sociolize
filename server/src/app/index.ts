@@ -34,7 +34,7 @@ export async function initServer(){
             return {
                 user: req.headers.authorization 
                 ?  JWTService.decodeToken(
-                        req.headers.authorization
+                        req.headers.authorization.split('Bearer ')[1] //token
                         
                     )
                     : undefined,
