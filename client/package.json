@@ -13,6 +13,8 @@
     "@react-oauth/google": "^0.12.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
     "lucide-react": "^0.292.0",
     "next": "14.0.2",
     "react": "^18",
@@ -22,6 +24,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
