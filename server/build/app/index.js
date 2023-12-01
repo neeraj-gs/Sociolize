@@ -40,8 +40,8 @@ function initServer() {
         app.use('/graphql', (0, express4_1.expressMiddleware)(gqlServer, {
             context: ({ req, res }) => __awaiter(this, void 0, void 0, function* () {
                 return {
-                    user: req.headers.authorization ?
-                        jwt_1.default.decodeToken(req.headers.authorization.split("Bearer ")[1])
+                    user: req.headers.authorization
+                        ? jwt_1.default.decodeToken(req.headers.authorization)
                         : undefined,
                 };
             })
