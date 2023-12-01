@@ -8,11 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resolvers = void 0;
+const axios_1 = __importDefault(require("axios"));
 const queries = {
     verifyGoogleToken: (parent, { token }) => __awaiter(void 0, void 0, void 0, function* () {
-        return token;
+        const googleToken = token;
+        const googleOauthURL = new URL('https://oauth2.googleapis.com/tokeninfo'); //base url , we are creting a new url 
+        googleOauthURL.searchParams.set('id_token', googleToken);
+        const { data } = yield axios_1.default.get(googleOauthURL.toString(), {
+            responseType: 'json',
+        });
+        console.log(data);
+        return "OK";
     })
 };
 exports.resolvers = { queries };
