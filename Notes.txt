@@ -21,3 +21,6 @@ tyDefs ins the schema , to tell what type fo wueries and mutaion is done and in 
 
 
 User gets a token from google to verify , we need to make a new request to oauth google api adn check the credentails
+
+
+to impleemtt client side caching we can use react query, we can create custom hooks on top of react queries

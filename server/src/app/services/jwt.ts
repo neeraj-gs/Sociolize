@@ -21,7 +21,13 @@ class JWTService{
     }
 
     public static decodeToken(token:string){
-        return jwt.verify(token,secret) as JWTUser;
+        try {
+            return jwt.verify(token,secret) as JWTUser;    
+        } catch (error) {
+            return null;
+        }
+
+        
     }
 }
 

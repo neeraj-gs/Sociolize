@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query"
 export const useCurrentUser = ()=>{
     //custom hook that gives a user if a user is presetnt
     const query = useQuery({
-        queryKey:['current-user'],
+        queryKey:["current-user"], //this si the key that stores the cache of teh user
         queryFn:()=>graphqlClient.request(getCurrentUserQuery)
 
     })

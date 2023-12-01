@@ -20,7 +20,12 @@ class JWTService {
         return token;
     }
     static decodeToken(token) {
-        return jsonwebtoken_1.default.verify(token, secret);
+        try {
+            return jsonwebtoken_1.default.verify(token, secret);
+        }
+        catch (error) {
+            return null;
+        }
     }
 }
 exports.default = JWTService;
