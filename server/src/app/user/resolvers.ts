@@ -69,8 +69,18 @@ const queries = {
         console.log(ctx)
         const id = ctx.user?.id
         if(!id) return null;
+
+        const user =await prismaclient.user.findUnique({
+            where:{
+                id
+            }
+        })
+        return user;
+
+
     }
     //context is basically used to get the header from the authoriationa dn tehn use it for better integrations
+
 };
 
 export const resolvers = {queries}

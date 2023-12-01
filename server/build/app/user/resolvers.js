@@ -57,6 +57,12 @@ const queries = {
         const id = (_a = ctx.user) === null || _a === void 0 ? void 0 : _a.id;
         if (!id)
             return null;
+        const user = yield db_1.prismaclient.user.findUnique({
+            where: {
+                id
+            }
+        });
+        return user;
     })
     //context is basically used to get the header from the authoriationa dn tehn use it for better integrations
 };
