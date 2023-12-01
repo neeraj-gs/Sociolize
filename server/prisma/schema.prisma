@@ -21,5 +21,19 @@ model User{
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  tweets Tweet[]
   
+}
+
+model Tweet {
+  id String @id @default(cuid())
+  content String
+  imageURL String? 
+
+  author User  @relation(fields: [authorId], references: [id]) //an author of type user where the authorid references teh id of the user
+  authorId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
