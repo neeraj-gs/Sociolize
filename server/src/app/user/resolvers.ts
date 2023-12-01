@@ -1,4 +1,5 @@
 import axios from "axios";
+import { prismaclient } from "../../client/db";
 
 interface GoogleTokenResult{
     iss?:string;
@@ -10,7 +11,7 @@ interface GoogleTokenResult{
     azp?:string;
     name?:string;
     picture?:string;
-    given_name?:string;
+    given_name:string;
     family_name?:string;
     iat?:string;
     exp?:string;
@@ -29,12 +30,28 @@ const queries = {
         const googleOauthURL = new URL('https://oauth2.googleapis.com/tokeninfo')  //base url , we are creting a new url 
         googleOauthURL.searchParams.set('id_token',googleToken)
 
-        const {data} = await axios.get(googleOauthURL.toString(),{
+        const {data} = await axios.get<GoogleTokenResult>(googleOauthURL.toString(),{
             responseType: 'json',
         })
 
-        console.log(data)
-        return "OK"
+        const user = await prismaclient.user.findUnique({
+            where:{
+                email:data.email,
+            }})
+
+        if(!user){
+            await prismaclient.user.create({
+                data:{
+                    email:data.email,
+                    firstName:data.given_name,
+                    lastName:data.family_name,
+                    profileImageURL:data.picture
+
+                }
+            })
+        }
+
+        
     }
 };
 
