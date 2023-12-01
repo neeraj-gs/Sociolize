@@ -33,7 +33,7 @@ export async function initServer(){
         context:async({req,res})=>{
             return {
                 user: req.headers.authorization ?  
-                    JWTService.decodeToken(req.headers.authorization)
+                    JWTService.decodeToken(req.headers.authorization.split("Bearer ")[1])
                     : undefined,
             }
         }
