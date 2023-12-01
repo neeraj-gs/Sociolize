@@ -60,8 +60,16 @@ export default function Home() {
 
 
   const {user} = useCurrentUser()
-  console.log(user)
   const queryClient = useQueryClient();
+
+  const handleImageClick = useCallback(()=>{
+    //when button is cleicked this button is called crete sa input tag select the type and a window of fiels is popping out
+    const input = document.createElement('input')
+    input.setAttribute('type', 'file')
+    input.setAttribute('accept','images/*')
+    input.click();
+  },[])
+
 
   const handleLoginWithGoolge = useCallback(async(cred:CredentialResponse)=>{
     const googleToken = cred.credential
@@ -124,8 +132,8 @@ export default function Home() {
           <div className='col-span-11'>
               <textarea className='border w-full bg-transparent text-xl px-3 border-b border-slate-100' placeholder="What's Happening?" rows={4}></textarea>
               <div className='text-xl flex justify-between items-center'>
-                <GrGallery />
-                <Button className='bg-black p-4 rounded-full mx-4 text-white text-sm hover:text-black' variant='ghost'><span className='mr-2'>P2P</span> <PiBroadcastFill /> </Button>
+                <GrGallery onClick={handleImageClick} />
+                <Button className='bg-black p-4 rounded-full mx-4 text-white text-sm hover:text-black' variant='ghost'><span className='mr-2'>Broadcast</span>  </Button>
               </div>
                 
           </div>
