@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-import React from 'react';
+import React, { useCallback } from 'react';
 import { SiSocialblade } from "react-icons/si";
 import { SiHashicorp } from "react-icons/si";
 import { RiHomeOfficeLine } from "react-icons/ri";
@@ -10,7 +10,7 @@ import { CiSaveDown2 } from "react-icons/ci";
 import { PiUserSwitchThin } from "react-icons/pi";
 import { PiBroadcastFill } from "react-icons/pi";
 import FeedCard from '@/components/FeedCard';
-import { GoogleLogin } from '@react-oauth/google';
+import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 
 
 
@@ -52,6 +52,11 @@ const LeftMenuItems = [
 
 
 export default function Home() {
+
+  const handleLoginWithGoolge = useCallback((cred:CredentialResponse)=>{
+    
+  },[])
+
   return (
     <main>
       <div className='grid grid-cols-12 h-screen w-screen px-56'>
