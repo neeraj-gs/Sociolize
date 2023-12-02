@@ -131,7 +131,7 @@ export default function Home() {
           </div>
           <div className='col-span-11'>
               <textarea className='border w-full bg-transparent text-xl px-3 border-b border-slate-100' placeholder="What's Happening?" rows={5}></textarea>
-              <div className='text-xl flex justify-between items-center'>
+              <div className='text-xl flex justify-between items-center hover:cursor-pointer hover:text-black'>
                 <GrGallery onClick={handleImageClick} />
                 <Button className='bg-black p-2 rounded-full mt-2 text-white text-xs hover:text-black' variant='ghost'><span className='mr-2'>Broadcast</span>  </Button>
               </div>

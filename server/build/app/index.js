@@ -19,6 +19,7 @@ const express4_1 = require("@apollo/server/express4");
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const user_1 = require("./user");
+const tweet_1 = require("./tweet");
 const jwt_1 = __importDefault(require("./services/jwt"));
 function initServer() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -28,12 +29,19 @@ function initServer() {
         const gqlServer = new server_1.ApolloServer({
             typeDefs: `
         ${user_1.User.types}
+        ${tweet_1.Tweet.types}
+
         type Query{
             ${user_1.User.queries}
+        }
+
+        type Mutation{
+            ${tweet_1.Tweet.mutations}
         }
         `,
             resolvers: {
                 Query: Object.assign({}, user_1.User.resolvers.queries),
+                Mutation: Object.assign({}, tweet_1.Tweet.resolvers.mutations)
             },
         });
         yield gqlServer.start();
