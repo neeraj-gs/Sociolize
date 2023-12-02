@@ -126,14 +126,14 @@ export default function Home() {
           <div className='grid grid-cols-12 gap-3'>
           <div className='col-span-1'>
             {user?.profileImageURL && (
-              <Image className='rounded-full' src={user?.profileImageURL} alt='user-iamge' height={70} width={70} />
+              <Image className='rounded-full' src={user?.profileImageURL} alt='user-iamge' height={50} width={50} />
             )}
           </div>
           <div className='col-span-11'>
-              <textarea className='border w-full bg-transparent text-xl px-3 border-b border-slate-100' placeholder="What's Happening?" rows={4}></textarea>
+              <textarea className='border w-full bg-transparent text-xl px-3 border-b border-slate-100' placeholder="What's Happening?" rows={5}></textarea>
               <div className='text-xl flex justify-between items-center'>
                 <GrGallery onClick={handleImageClick} />
-                <Button className='bg-black p-4 rounded-full mx-4 text-white text-sm hover:text-black' variant='ghost'><span className='mr-2'>Broadcast</span>  </Button>
+                <Button className='bg-black p-2 rounded-full mt-2 text-white text-xs hover:text-black' variant='ghost'><span className='mr-2'>Broadcast</span>  </Button>
               </div>
                 
           </div>
