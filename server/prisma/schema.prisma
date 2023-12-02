@@ -31,7 +31,7 @@ model Tweet {
   content String
   imageURL String? 
 
-  author User  @relation(fields: [authorId], references: [id]) //an author of type user where the authorid references teh id of the user
+  author User  @relation(fields: [authorId],references: [id]) //an author of type user where the authorid references teh id of the user
   authorId String
 
   createdAt DateTime @default(now())
