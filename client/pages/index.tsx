@@ -15,6 +15,8 @@ import { RiHomeOfficeLine } from "react-icons/ri";
 import { SiHashicorp, SiSocialblade } from "react-icons/si";
 import { TbMessageCircleHeart } from "react-icons/tb";
 import { GrGallery } from "react-icons/gr";
+import { useGetAllTweets } from '@/hooks/tweet';
+import { Tweet } from '@/gql/graphql';
 
 
 
@@ -60,6 +62,7 @@ export default function Home() {
 
 
   const {user} = useCurrentUser()
+  const {tweets=[]} = useGetAllTweets();
   const queryClient = useQueryClient();
 
   const handleImageClick = useCallback(()=>{
@@ -142,7 +145,10 @@ export default function Home() {
           </div>
           </div>
           </div> 
-          <FeedCard />
+          {
+            tweets?.map((tweet:Tweet|undefined) => tweet ? <FeedCard key={tweet?.id} data={tweet as Tweet} /> : null)
+          }
+          
         </div>
 
 
