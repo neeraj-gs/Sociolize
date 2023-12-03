@@ -9,14 +9,15 @@ interface CreaateTweetPayload{
 
 const mutations = {
     createTweet:async(parent:any,{payload}:{payload:CreaateTweetPayload}, ctx:GraphqlContext)=>{
-        if(!ctx.user) throw new Error("You are Not Authenticated")
-        console.log(ctx.user)
+        const id = ctx.user?.id;
+        if(!id) throw new Error("You are Not Authenticated")
+        // console.log(ctx.user)
         const tweet = await prismaclient.tweet.create({
         data:{
             content: payload.content,
             imageURL: payload.imageURL,
             author:{
-                connect:{id:ctx.user.id}
+                connect:{id:id}
             }
         }
         })

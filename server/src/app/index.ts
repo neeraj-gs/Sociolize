@@ -39,18 +39,19 @@ export async function initServer(){
 
     await gqlServer.start();
 
-    app.use('/graphql',expressMiddleware(gqlServer,{
+    app.use('/graphql',
+    expressMiddleware(gqlServer,{
         context:async({req,res})=>{
             return {
                 user: req.headers.authorization 
                 ?  JWTService.decodeToken(
                         req.headers.authorization.split('Bearer ')[1] //token
-                        
                     )
                     : undefined,
             }
         }
-}))
+    })
+    )
 
     return app;
 }

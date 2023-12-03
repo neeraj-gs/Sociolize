@@ -16,6 +16,21 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type CreateTweetData = {
+  content: Scalars['String']['input'];
+  imageURL?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  createTweet?: Maybe<Tweet>;
+};
+
+
+export type MutationCreateTweetArgs = {
+  payload: CreateTweetData;
+};
+
 export type Query = {
   __typename?: 'Query';
   getCurrentUser?: Maybe<User>;
@@ -27,6 +42,14 @@ export type QueryVerifyGoogleTokenArgs = {
   token: Scalars['String']['input'];
 };
 
+export type Tweet = {
+  __typename?: 'Tweet';
+  author?: Maybe<User>;
+  content: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  imageURL?: Maybe<Scalars['String']['output']>;
+};
+
 export type User = {
   __typename?: 'User';
   email: Scalars['String']['output'];
@@ -34,6 +57,7 @@ export type User = {
   id: Scalars['ID']['output'];
   lastName?: Maybe<Scalars['String']['output']>;
   profileImageURL?: Maybe<Scalars['String']['output']>;
+  tweets?: Maybe<Array<Maybe<Tweet>>>;
 };
 
 export type VerifyUserGoogleTokenQueryVariables = Exact<{
