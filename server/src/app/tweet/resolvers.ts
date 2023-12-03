@@ -7,6 +7,13 @@ interface CreaateTweetPayload{
     imageURL?:string
 }
 
+const queries = {
+    getAllTweets:()=>prismaclient.tweet.findMany({
+            orderBy:{createdAt:"desc"}
+        })
+    
+}
+
 
 const mutations = {
     createTweet:async(parent:any,{payload}:{payload:CreaateTweetPayload}, ctx:GraphqlContext)=>{
@@ -39,4 +46,4 @@ const authorResolver = {
 
 
 
-export const resolvers = {mutations,authorResolver}
+export const resolvers = {mutations,authorResolver,queries}
