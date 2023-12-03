@@ -34,7 +34,8 @@ export async function initServer(){
             Mutation:{
                 ...Tweet.resolvers.mutations
             },
-            ...Tweet.resolvers.authorResolver
+            ...Tweet.resolvers.authorResolver,
+            ...User.resolvers.getTweets
         },
     })
 

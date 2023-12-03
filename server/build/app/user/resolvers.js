@@ -64,4 +64,13 @@ const queries = {
     })
     //context is basically used to get the header from the authoriationa dn tehn use it for better integrations
 };
-exports.resolvers = { queries };
+const getTweets = {
+    User: {
+        tweets: (parent) => db_1.prismaclient.tweet.findMany({
+            where: {
+                author: { id: parent.id }
+            }
+        })
+    }
+};
+exports.resolvers = { queries, getTweets };
