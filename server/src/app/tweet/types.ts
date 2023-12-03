@@ -5,16 +5,6 @@ export const types=`#graphql
         imageURL: String
     }
 
-    type User {
-        id: ID!
-        firstName: String!
-        lastName: String
-        email: String!
-        profileImageURL: String
-
-        tweets: [Tweet]
-    }
-
     type Tweet {
         id: ID!
         content: String!

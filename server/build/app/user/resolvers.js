@@ -52,14 +52,12 @@ const queries = {
         return userToken;
     }),
     getCurrentUser: (parent, args, ctx) => __awaiter(void 0, void 0, void 0, function* () {
-        var _a;
-        console.log(ctx);
-        const id = (_a = ctx.user) === null || _a === void 0 ? void 0 : _a.id;
-        if (!id)
+        // console.log(ctx)
+        if (!ctx.user)
             return null;
         const user = yield db_1.prismaclient.user.findUnique({
             where: {
-                id
+                id: ctx.user.id
             }
         });
         return user;

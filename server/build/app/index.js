@@ -47,12 +47,13 @@ function initServer() {
         yield gqlServer.start();
         app.use('/graphql', (0, express4_1.expressMiddleware)(gqlServer, {
             context: ({ req, res }) => __awaiter(this, void 0, void 0, function* () {
-                return {
-                    user: req.headers.authorization
-                        ? jwt_1.default.decodeToken(req.headers.authorization.split('Bearer ')[1] //token
-                        )
-                        : undefined,
-                };
+                var _a;
+                const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split('Bearer ')[1];
+                if (token) {
+                    const user = jwt_1.default.decodeToken(token);
+                    return { user };
+                }
+                return {};
             })
         }));
         return app;
