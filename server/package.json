@@ -20,6 +20,7 @@
   "dependencies": {
     "@apollo/server": "^4.9.5",
     "@aws-sdk/client-s3": "^3.465.0",
+    "@aws-sdk/s3-request-presigner": "^3.465.0",
     "@prisma/client": "^5.6.0",
     "@types/jsonwebtoken": "^9.0.5",
     "axios": "^1.6.2",
