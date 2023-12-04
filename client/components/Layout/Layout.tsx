@@ -102,8 +102,8 @@ const Layout:React.FC<LayoutProps> = (props) => {
   {user && (
     <div className='absolute bottom-5 flex gap-2 items-center bg-slate-100 px-8 py-3 rounded-full'>
     {user && user.profileImageURL && <Image className='rounded-full' src={user?.profileImageURL} height={40} alt='userIMage' width={40}/>}
-    <div>
-      <h3 className='text-lg'>
+    <div className='hidden sm:block'>
+      <h3 className='text-lg '>
       {user.firstName} {user.lastName}
       </h3>
     </div>
