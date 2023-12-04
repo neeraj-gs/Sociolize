@@ -12,7 +12,7 @@ interface CreaateTweetPayload{
 
 const s3Client = new S3Client({
     region:"ap-south-1",
-    credentials:{accessKeyId:'',secretAccessKey:''}
+    credentials:{accessKeyId:"",secretAccessKey:""}
 })
 
 const queries = {
@@ -27,7 +27,7 @@ const queries = {
 
             const putObjectCommand = new PutObjectCommand({
                 Bucket:'sociolize-dev',
-                Key:`/uploads/${ctx.user.id}/tweets/${imageName}-${Date.now()}.${imageType}`
+                Key:`uploads/${ctx.user.id}/tweets/${imageName}-${Date.now()}.${imageType}`
             })
 
             const signedURL = getSignedUrl(s3Client,putObjectCommand,)
