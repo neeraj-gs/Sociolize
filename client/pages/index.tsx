@@ -1,7 +1,9 @@
 import { graphqlClient } from '@/clients/api';
 import FeedCard from '@/components/FeedCard';
 import { Button } from '@/components/ui/button';
+import { Tweet } from '@/gql/graphql';
 import { verifyUserGoogleTokenQuery } from '@/graphql/query/user';
+import { useGetAllTweets } from '@/hooks/tweet';
 import { useCurrentUser } from '@/hooks/user';
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import { useQueryClient } from '@tanstack/react-query';
@@ -10,13 +12,11 @@ import React, { useCallback } from 'react';
 import toast from 'react-hot-toast';
 import { AiOutlineNotification } from "react-icons/ai";
 import { CiSaveDown2 } from "react-icons/ci";
+import { GrGallery } from "react-icons/gr";
 import { PiBroadcastFill, PiUserSwitchThin } from "react-icons/pi";
 import { RiHomeOfficeLine } from "react-icons/ri";
 import { SiHashicorp, SiSocialblade } from "react-icons/si";
 import { TbMessageCircleHeart } from "react-icons/tb";
-import { GrGallery } from "react-icons/gr";
-import { useGetAllTweets } from '@/hooks/tweet';
-import { Tweet } from '@/gql/graphql';
 
 
 
@@ -62,7 +62,7 @@ export default function Home() {
 
 
   const {user} = useCurrentUser()
-  const {tweets=[]} = useGetAllTweets();
+  const {tweets = []} = useGetAllTweets();
   const queryClient = useQueryClient();
 
   const handleImageClick = useCallback(()=>{
@@ -146,7 +146,7 @@ export default function Home() {
           </div>
           </div> 
           {
-            tweets?.map((tweet:Tweet|undefined) => tweet ? <FeedCard key={tweet?.id} data={tweet as Tweet} /> : null)
+            tweets?.map(tweet => tweet ? <FeedCard key={tweet?.id} data={tweet as Tweet} /> : null)
           }
           
         </div>
