@@ -132,6 +132,7 @@ export default function Home() {
 
         {/* CenterGrid  */}
         <div className='col-span-5 border-r-2 border-l-2 border-slate-200'>
+          {/* rendering the feed items  */}
           <div>
           <div className='border-2 border-r-0 border-l-0 border-slate-50 p-5 hover:bg-slate-50 transition-all cursor-pointer'>
           <div className='grid grid-cols-12 gap-3'>
