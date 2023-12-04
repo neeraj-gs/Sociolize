@@ -23,6 +23,11 @@ const queries = {
 
             const allowedImageTypes = ['jpg','jpeg','png','webp'];
             if(!allowedImageTypes.includes(imageType)) throw new Error("Unsupported Image Type ,need to upload onyl jpg,jpeg,png and webp")
+
+            const putObjectCommand = new PutObjectCommand({
+                Bucket:'sociolize-dev',
+                Key:`/uploads/${ctx.user.id}/tweets/${Date.now().toString()}.${imageType}`
+            })
         }    
 }
 
