@@ -78,8 +78,18 @@ const queries = {
         return user;
 
 
-    }
+    },
     //context is basically used to get the header from the authoriationa dn tehn use it for better integrations
+
+    getUserById: async(parent:any,{id}:{id:string},ctx:GraphqlContext) => {
+        return(
+            prismaclient.user.findUnique({
+                where:{
+                    id
+                }
+            })
+        )
+    }
 
 };
 

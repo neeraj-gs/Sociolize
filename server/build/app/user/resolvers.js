@@ -61,8 +61,15 @@ const queries = {
             }
         });
         return user;
-    })
+    }),
     //context is basically used to get the header from the authoriationa dn tehn use it for better integrations
+    getUserById: (parent, { id }, ctx) => __awaiter(void 0, void 0, void 0, function* () {
+        return (db_1.prismaclient.user.findUnique({
+            where: {
+                id
+            }
+        }));
+    })
 };
 const getTweets = {
     User: {
