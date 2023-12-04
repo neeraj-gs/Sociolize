@@ -1,5 +1,5 @@
 export const queries = `#graphql
     getAllTweets: [Tweet]
-    getSignedURLForTweet(imageType:String!): String
+    getSignedURLForTweet(imageName:String!,imageType:String!): String
 
 `;

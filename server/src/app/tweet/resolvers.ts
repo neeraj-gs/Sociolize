@@ -11,6 +11,7 @@ interface CreaateTweetPayload{
 }
 
 const s3Client = new S3Client({
+    region:"ap-south-1",
     credentials:{accessKeyId:'',secretAccessKey:''}
 })
 
@@ -18,7 +19,7 @@ const queries = {
     getAllTweets:()=>prismaclient.tweet.findMany({
             orderBy:{createdAt:"desc"}
         }),
-        getSignedURLForTweet: async(parent:any,{imageType}:{imageType:string},ctx:GraphqlContext)=>{
+        getSignedURLForTweet: async(parent:any,{imageType,imageName}:{imageType:string,imageName:string},ctx:GraphqlContext)=>{
             if(!ctx.user || ctx.user.id) throw new Error("You Are Unauthenticated")
 
             const allowedImageTypes = ['jpg','jpeg','png','webp'];
@@ -26,8 +27,13 @@ const queries = {
 
             const putObjectCommand = new PutObjectCommand({
                 Bucket:'sociolize-dev',
-                Key:`/uploads/${ctx.user.id}/tweets/${Date.now().toString()}.${imageType}`
+                Key:`/uploads/${ctx.user.id}/tweets/${imageName}-${Date.now()}.${imageType}`
             })
+
+            const signedURL = getSignedUrl(s3Client,putObjectCommand,)
+            return signedURL;
+
+
         }    
 }
 
