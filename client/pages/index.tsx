@@ -1,23 +1,24 @@
+import { graphqlClient } from '@/clients/api';
 import FeedCard from '@/components/FeedCard';
 import Layout from '@/components/Layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Tweet } from '@/gql/graphql';
+import { getAllTweetsQuery } from '@/graphql/query/tweet';
 import { useCreateTweet, useGetAllTweets } from '@/hooks/tweet';
 import { useCurrentUser } from '@/hooks/user';
+import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 import { GrGallery } from "react-icons/gr";
 
 
+interface HomeProps{
+  tweets?:Tweet[]
+}
 
 
-
-
-
-
-export default function Home() {
+export default function Home(props:HomeProps) {
   const {user} = useCurrentUser()
-  const {tweets = []} = useGetAllTweets();
   
   const {mutate} = useCreateTweet();
 
@@ -63,11 +64,20 @@ export default function Home() {
   </div>
   </div> 
   {
-    tweets?.map(tweet => tweet ? <FeedCard key={tweet?.id} data={tweet as Tweet} /> : null)
+    props.tweets?.map(tweet => tweet ? <FeedCard key={tweet?.id} data={tweet as Tweet} /> : null)
   }
 
       </Layout>
       
     </main>
   )
+}
+
+export const getServerSideProps:GetServerSideProps<HomeProps> = async(context)=>{
+  const allTweets = await graphqlClient.request(getAllTweetsQuery);
+  return {
+    props:{
+      tweets: allTweets.getAllTweets as Tweet[]
+    }
+  }
 }
