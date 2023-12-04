@@ -77,10 +77,11 @@ const Layout:React.FC<LayoutProps> = (props) => {
 
   return (
     <div>
-        <div className='grid grid-cols-12 h-screen w-screen px-56'>
+        <div className='grid grid-cols-12 h-screen w-screen sm:px-56'>
 
 {/* Left Grid */}
-<div className='col-span-3  pt-8 px-4 ml-20 relative' >
+<div className='col-span-2 sm:col-span-3  pt-8 px-4 flex sm:justify-end pr-4 relative' >
+  <div>
   <div className='text-6xl w-fit  hover:bg-gray-200 rounded-full p-2 h-fit cursor-pointer transition-all'>
     <SiSocialblade  />
   </div>
@@ -88,13 +89,15 @@ const Layout:React.FC<LayoutProps> = (props) => {
     <ul>
     {LeftMenuItems.map((i)=>{
       return(
-        <li className=' w-fit flex justify-start items-center gap-4 hover:bg-gray-200 rounded-full px-3 py-3 cursor-pointer mt-4' key={i.title}><span>{i.icon}</span> <span>{i.title}</span></li>
+        <li className=' w-fit flex justify-start items-center gap-4 hover:bg-gray-200 rounded-full px-3 py-3 cursor-pointer mt-4' key={i.title}><span>{i.icon}</span> <span className='hidden sm:inline'>{i.title}</span></li>
       )
     })}
     </ul>
     <div className='mt-6 pr-2'>
-      <Button className='bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'><span className='mr-2'>P2P</span> <PiBroadcastFill /> </Button>
+      <Button className='hidden sm:block bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'><span className='mr-2'>P2P</span> <PiBroadcastFill /> </Button>
+      <Button className='block sm:hidden bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'><PiBroadcastFill /> </Button>
     </div>
+  </div>
   </div>
   {user && (
     <div className='absolute bottom-5 flex gap-2 items-center bg-slate-100 px-8 py-3 rounded-full'>
@@ -110,7 +113,7 @@ const Layout:React.FC<LayoutProps> = (props) => {
 </div>
 
 {/* CenterGrid  */}
-<div className='col-span-5 border-r-2 border-l-2 border-slate-200'>
+<div className='col-span-10 sm:col-span-5 border-r-2 border-l-2 border-slate-200'>
   {/* rendering the feed items  */}
   {props.children}
   
@@ -118,9 +121,7 @@ const Layout:React.FC<LayoutProps> = (props) => {
 
 
 
-
-
-<div className='col-span-4 p-5'>
+<div className='col-span-0 sm:col-span-4 p-5'>
   {!user && (
     <div className='p-4 bg-slate-50 rounded-xl w-64'>
     <h1 className='text-2xl my-2 font-serif font-bold'>New to Sociolize?</h1>
