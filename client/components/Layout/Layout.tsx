@@ -5,7 +5,8 @@ import { useCurrentUser } from '@/hooks/user';
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import { useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
-import React, { useCallback } from 'react';
+import Link from 'next/link';
+import React, { useCallback, useMemo } from 'react';
 import toast from 'react-hot-toast';
 import { AiOutlineNotification } from "react-icons/ai";
 import { CiSaveDown2 } from "react-icons/ci";
@@ -20,36 +21,10 @@ import { TbMessageCircleHeart } from "react-icons/tb";
 interface LeftGridButtons{
   title:string;
   icon:React.ReactNode
+  link:string;
 }
 
-const LeftMenuItems:LeftGridButtons[] = [
-  {
-    title: "Home",
-    icon: <RiHomeOfficeLine />
-  },
-  {
-    title: "Explore",
-    icon: <SiHashicorp />
-  },
-  {
-    title: "Notifications",
-    icon: <AiOutlineNotification /> 
-  },
-  {
-    title: "Messages",
-    icon: <TbMessageCircleHeart /> 
-  },
-  {
-    title: "Saved",
-    icon: <CiSaveDown2 /> 
-  },
-  {
-    title: "Profile",
-    icon: <PiUserSwitchThin /> 
-  },
-  
 
-]
 interface LayoutProps{
     children: React.ReactNode
 }
@@ -57,6 +32,41 @@ interface LayoutProps{
 const Layout:React.FC<LayoutProps> = (props) => {
   const {user} = useCurrentUser()
   const queryClient = useQueryClient();
+
+  const LeftMenuItems:LeftGridButtons[] = useMemo(()=> [
+    {
+      title: "Home",
+      icon: <RiHomeOfficeLine />,
+      link:'/'
+    },
+    {
+      title: "Explore",
+      icon: <SiHashicorp />,
+      link:'/'
+    },
+    {
+      title: "Notifications",
+      icon: <AiOutlineNotification /> ,
+      link:'/'
+    },
+    {
+      title: "Messages",
+      icon: <TbMessageCircleHeart /> ,
+      link:'/'
+    },
+    {
+      title: "Saved",
+      icon: <CiSaveDown2 /> ,
+      link:'/'
+    },
+    {
+      title: "Profile",
+      icon: <PiUserSwitchThin /> ,
+      link:`/${user?.id}`
+    },
+    
+  
+  ],[user?.id])
 
   const handleLoginWithGoolge = useCallback(async(cred:CredentialResponse)=>{
     const googleToken = cred.credential
@@ -89,7 +99,11 @@ const Layout:React.FC<LayoutProps> = (props) => {
     <ul>
     {LeftMenuItems.map((i)=>{
       return(
-        <li className=' w-fit flex justify-start items-center gap-4 hover:bg-gray-200 rounded-full px-3 py-3 cursor-pointer mt-4' key={i.title}><span>{i.icon}</span> <span className='hidden sm:inline'>{i.title}</span></li>
+        <li  key={i.title}>
+          <Link className=' w-fit flex justify-start items-center gap-4 hover:bg-gray-200 rounded-full px-3 py-3 cursor-pointer mt-4' href={i.link}>
+          <span>{i.icon}</span> <span className='hidden sm:inline'>{i.title}</span> 
+          </Link>
+        </li>
       )
     })}
     </ul>

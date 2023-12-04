@@ -5,9 +5,13 @@ import { useCurrentUser } from '@/hooks/user'
 import type {NextPage} from 'next'
 import Image from 'next/image'
 import { BiLeftArrow } from 'react-icons/bi'
+import {useRouter} from 'next/router'
 
 const UserProfilePage:NextPage=()=>{
-    const {user} = useCurrentUser()
+    const {user} = useCurrentUser();
+    const router = useRouter();
+
+    
     return(
         <div>
             <Layout>
