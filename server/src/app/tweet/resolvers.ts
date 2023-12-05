@@ -20,7 +20,7 @@ const queries = {
             orderBy:{createdAt:"desc"}
         }),
         getSignedURLForTweet: async(parent:any,{imageType,imageName}:{imageType:string,imageName:string},ctx:GraphqlContext)=>{
-            if(!ctx.user || ctx.user.id) throw new Error("You Are Unauthenticated")
+            if(!ctx.user || !ctx.user.id) throw new Error("You Are Unauthenticated")
 
             const allowedImageTypes = ['jpg','jpeg','png','webp'];
             if(!allowedImageTypes.includes(imageType)) throw new Error("Unsupported Image Type ,need to upload onyl jpg,jpeg,png and webp")
