@@ -92,6 +92,9 @@ export default function Home(props:HomeProps) {
   </div>
   <div className='col-span-11'>
       <textarea value={content} onChange={e=>setContent(e.target.value)} className='border w-full bg-transparent text-xl px-3 border-b border-slate-100' placeholder="What's Happening?" rows={5}></textarea>
+      {
+        imgURL && <Image src={imgURL} alt='tweet-image' height={300} width={300} />
+      }
       <div className='text-xl flex justify-between items-center hover:cursor-pointer hover:text-black'>
         <GrGallery onClick={handleImageClick} />
         <Button onClick={handleCreateTweet} className='bg-black p-2 rounded-full mt-2 text-white text-xs hover:text-black' variant='ghost'><span className='mr-2'>Broadcast</span>  </Button>
