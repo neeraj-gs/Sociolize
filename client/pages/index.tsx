@@ -30,11 +30,27 @@ export default function Home(props:HomeProps) {
     })
   },[content,mutate])
 
+
+  const handleInputChangeFile = useCallback((input:HTMLInputElement)=>{
+    return (event:Event)=>{
+      event.preventDefault();
+      console.log(input.files)
+    }
+  },[])
+
+
+
   const handleImageClick = useCallback(()=>{
     //when button is cleicked this button is called crete sa input tag select the type and a window of fiels is popping out
     const input = document.createElement('input')
     input.setAttribute('type', 'file')
-    input.setAttribute('accept','images/*')
+    input.setAttribute('accept','images/*');
+
+
+    const hanlderFn = handleInputChangeFile(input)
+
+    input.addEventListener('change',hanlderFn)
+
     input.click();
   },[])
 
