@@ -92,7 +92,7 @@ const Layout:React.FC<LayoutProps> = (props) => {
 {/* Left Grid */}
 <div className='col-span-2 sm:col-span-3  pt-8 px-4 flex sm:justify-end pr-4 relative' >
   <div>
-  <div className='text-6xl w-fit  hover:bg-gray-200 rounded-full p-2 h-fit cursor-pointer transition-all'>
+  <div className='text-4xl sm:text-6xl w-fit  hover:bg-gray-200 rounded-full p-2 h-fit cursor-pointer transition-all'>
     <SiSocialblade  />
   </div>
   <div className='mt-6 text-xl pr-4'>
@@ -108,8 +108,8 @@ const Layout:React.FC<LayoutProps> = (props) => {
     })}
     </ul>
     <div className='mt-6 pr-2'>
-      <Button className='hidden sm:block bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'><span className='mr-2'>P2P</span> <PiBroadcastFill /> </Button>
-      <Button className='block sm:hidden bg-black p-4 rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'><PiBroadcastFill /> </Button>
+      <Button className='hidden sm:block bg-black rounded-full w-full mx-4 text-white text-lg hover:text-black' variant='ghost'>BroadCast</Button>
+      <Button className='block sm:hidden bg-black rounded-full w-fit text-white text-lg hover:text-black' variant='ghost'><PiBroadcastFill /> </Button>
     </div>
   </div>
   </div>

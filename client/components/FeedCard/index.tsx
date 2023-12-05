@@ -19,30 +19,30 @@ const FeedCard:React.FC<FeedCardProps> = (props) => {
     <main className='border-2 border-r-0 border-l-0 border-slate-50 p-5 hover:bg-slate-50 transition-all cursor-pointer'>
         <div className='grid grid-cols-12 gap-3'>
         <div className='col-span-1'>
-           {data.author?.profileImageURL && <Image className='rounded-full' src={data.author.profileImageURL} alt='user-iamge' height={70} width={70} />} 
+           {data.author?.profileImageURL && <Image className='rounded-full' src={data.author.profileImageURL} alt='user-iamge' height={100} width={100} />} 
         </div>
         <div className='col-span-11'>
-            <h5 className='font-bold'>
+            <h5 className='font-bold text-lg'>
                 <Link href={`/${data.author?.id}`}>{data.author?.firstName} {data.author?.lastName}</Link>
             </h5>
-            <p>{data.content}</p>
+            <p className='mt-3'>{data.content}</p>
             {
-                data.imageURL && <Image src={data.imageURL} alt='img-tweet' width={400} height={400} />
+                data.imageURL && <Image src={data.imageURL} alt='img-tweet' width={400} height={500} />
             }
 
              {/* Buttons  */}
             <div className='flex justify-between mt-6 text-xl items-center w-[90%]'>
                 <div>
-                    <FaRegComments />
+                    <FaRegComments className='hover:cursor-pointer hover:text-blue-400' />
                 </div>
                 <div>
-                    <BiRepost />
+                    <BiRepost className='hover:cursor-pointer hover:text-green-400 text-2xl' />
                 </div>
                 <div>
-                    <FaRegHeart />
+                    <FaRegHeart className='hover:cursor-pointer hover:text-red-500' />
                 </div>
                 <div>
-                    <FaRegShareSquare />
+                    <FaRegShareSquare className='hover:cursor-pointer hover:text-orange-600' />
                 </div>
 
             </div>

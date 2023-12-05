@@ -93,9 +93,9 @@ export default function Home(props:HomeProps) {
     )}
   </div>
   <div className='col-span-11'>
-      <textarea value={content} onChange={e=>setContent(e.target.value)} className='border w-full bg-transparent text-xl px-3 border-b border-slate-100' placeholder="What's Happening?" rows={5}></textarea>
+      <textarea value={content} onChange={e=>setContent(e.target.value)} className='border w-full bg-transparent text-xl px-3 border-b border-slate-200' placeholder="What's Happening?" rows={7}></textarea>
       {
-        imageURL && <Image src={imageURL} alt='tweet-image' height={300} width={300} />
+        imageURL && <Image src={imageURL} alt='tweet-image' height={200} width={200} />
       }
       <div className='text-xl flex justify-between items-center hover:cursor-pointer hover:text-black'>
         <GrGallery onClick={handleImageClick} />
@@ -109,9 +109,7 @@ export default function Home(props:HomeProps) {
   {
     props.tweets?.map(tweet => tweet ? <FeedCard key={tweet?.id} data={tweet as Tweet} /> : null)
   }
-
-      </Layout>
-      
+      </Layout>   
     </main>
   )
 }
