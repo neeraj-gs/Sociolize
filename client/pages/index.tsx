@@ -3,12 +3,14 @@ import FeedCard from '@/components/FeedCard';
 import Layout from '@/components/Layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Tweet } from '@/gql/graphql';
-import { getAllTweetsQuery } from '@/graphql/query/tweet';
+import { getAllTweetsQuery, getSignedURLForTweetQuery } from '@/graphql/query/tweet';
 import { useCreateTweet, useGetAllTweets } from '@/hooks/tweet';
 import { useCurrentUser } from '@/hooks/user';
+import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
+import toast from 'react-hot-toast';
 import { GrGallery } from "react-icons/gr";
 
 
@@ -19,10 +21,9 @@ interface HomeProps{
 
 export default function Home(props:HomeProps) {
   const {user} = useCurrentUser()
-  
   const {mutate} = useCreateTweet();
-
   const [content,setContent] =  useState('')
+  const [imgURL,setImgURL] =  useState('')
 
   const handleCreateTweet = useCallback(()=>{
     mutate({
@@ -32,9 +33,29 @@ export default function Home(props:HomeProps) {
 
 
   const handleInputChangeFile = useCallback((input:HTMLInputElement)=>{
-    return (event:Event)=>{
+    return async(event:Event)=>{
       event.preventDefault();
-      console.log(input.files)
+      const file:File|null|undefined = input.files?.item(0)
+      if(!file) return;
+
+      const {getSignedURLForTweet} = await graphqlClient.request(getSignedURLForTweetQuery,{
+        imageName:file.name,
+        imageType:file.type,
+      })
+
+      if(getSignedURLForTweet){
+        toast.loading('Uploading Your Image ...',{id:'2'})
+        await axios.put(getSignedURLForTweet,file,{
+          headers:{
+            'Content-Type':file.type
+          }
+        })
+        toast.success("Upload Completed Successfully",{id:'2'})
+        const url = new URL(getSignedURLForTweet) 
+        const myFilePath = `${url.origin}${url.pathname}`
+        setImgURL(myFilePath) 
+
+      }
     }
   },[])
 
@@ -52,7 +73,8 @@ export default function Home(props:HomeProps) {
     input.addEventListener('change',hanlderFn)
 
     input.click();
-  },[])
+
+  },[handleInputChangeFile])
 
 
   
