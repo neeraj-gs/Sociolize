@@ -11,7 +11,7 @@ interface CreaateTweetPayload{
 }
 
 const s3Client = new S3Client({
-    
+
 })
 
 const queries = {
@@ -25,7 +25,7 @@ const queries = {
             if(!allowedImageTypes.includes(imageType)) throw new Error("Unsupported Image Type ,need to upload onyl jpg,jpeg,png and webp")
 
             const putObjectCommand = new PutObjectCommand({
-                Bucket:'sociolize-dev',
+                Bucket:process.env.AWS_S3_BUCKET,
                 Key:`uploads/${ctx.user.id}/tweets/${imageName}-${Date.now()}.${imageType}`
             })
 
