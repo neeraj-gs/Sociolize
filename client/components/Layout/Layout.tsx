@@ -80,6 +80,7 @@ const Layout:React.FC<LayoutProps> = (props) => {
       window.localStorage.setItem("__sociolize_token",verifyGoogleToken)
     } 
     //have verified the and got the token , from now we need to sent the token as a header everytime we perform some operations on the cleint side
+    //@ts-ignore
     await queryClient.invalidateQueries(["current-user"]); //automatically make a server request for me
 
   },[queryClient])  

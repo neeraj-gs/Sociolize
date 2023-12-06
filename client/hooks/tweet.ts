@@ -11,6 +11,7 @@ export const useCreateTweet = ()=>{
         mutationFn:(payload:CreateTweetData)=> graphqlClient.request(createTweetMutation,{payload}),
         onMutate:(payload)=> toast.loading("Broadcasting your Post ... ",{id:"1"}),
         onSuccess: async(payload)=> {
+            //@ts-ignore
             await queryClient.invalidateQueries(["allTweets"])
             toast.success('Broadcasted your post Successfully',{id:"1"})
         }
